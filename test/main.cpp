@@ -42,11 +42,13 @@ int main()
                     Numbers.insert(Numbers.begin() + j, Elements);
                     break;
                 }
-                else if ((j == ( Numbers.size() - 1 )) && (Elements > Numbers.at(j)))
+                else if ((j == ( Numbers.size() - 1 )) && (Elements >= Numbers.at(j)))
                 {
                     Numbers.push_back(Elements);
+                    break;
                 }
             }
+            cout << Numbers.size() << endl;
         }
     }
     for (int i : Numbers)
