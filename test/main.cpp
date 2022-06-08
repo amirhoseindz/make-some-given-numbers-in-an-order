@@ -1,34 +1,30 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-vector <int> MakeNumbersInOrder(vector <int> VectorNumbers)
+int main()
 {
+    int VectorSize;
+    cout << "pleas type how many numbers you wanna put : " << endl;
+    cin >> VectorSize;
+    vector <int> Numbers;
+    cout << " pleas enter the numbers you want to get in a order : " << endl;
     int temp;
-    for (int i = 0; i < VectorNumbers.size(); i++)
+    for(int i = 0; i < VectorSize; i ++)
     {
-        for (int j = i; j < VectorNumbers.size(); j++)
+        int Elements;
+        cin >> Elements;
+        Numbers.push_back(Elements);
+        for (int j = 0; j < Numbers.size(); j++)
         {
-            if (VectorNumbers.at(i) > VectorNumbers.at(j))
+            if (Numbers.at(i) > Numbers.at(j))
             {
-                temp = VectorNumbers.at(i);
-                VectorNumbers.at(i) = VectorNumbers.at(j);
-                VectorNumbers.at(j) = temp;
+                temp = Numbers.at(i);
+                Numbers.at(i) = Numbers.at(j);
+                Numbers.at(j) = temp;
             }
         }
     }
-    return VectorNumbers;
-}
-int main()
-{
-    int VectorSize = 10;
-    vector <int> Numbers(VectorSize);
-    cout << " pleas enter the numbers you want to get in a order : " << endl;
-    for(auto& Elements : Numbers)
-    {
-        cin >> Elements;
-    }
-    vector <int> NumbersInOrder = MakeNumbersInOrder(Numbers);
-    for (int i : NumbersInOrder)
+    for (int i : Numbers)
     {
         cout << i << ", ";
     }
