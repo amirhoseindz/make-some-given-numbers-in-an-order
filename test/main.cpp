@@ -23,14 +23,33 @@ int main()
     int VectorSize;
     cout << "pleas type how many numbers you wanna put : " << endl;
     cin >> VectorSize;
-    vector <int> Numbers(VectorSize);
+    vector <int> Numbers;
     cout << " pleas enter the numbers you want to get in a order : " << endl;
-    for(auto& Elements : Numbers)
+    for(int i = 0; i < VectorSize; i++)
     {
+        int Elements;
         cin >> Elements;
+        if (i == 0)
+        {
+            Numbers.insert(Numbers.begin(), Elements);
+        }
+        else
+        {
+            for (int j = 0; j < Numbers.size(); j++)
+            {
+                if (Elements < Numbers.at(j))
+                {
+                    Numbers.insert(Numbers.begin() + j, Elements);
+                    break;
+                }
+                else if ((j == ( Numbers.size() - 1 )) && (Elements > Numbers.at(j)))
+                {
+                    Numbers.push_back(Elements);
+                }
+            }
+        }
     }
-    vector <int> NumbersInOrder = MakeNumbersInOrder(Numbers);
-    for (int i : NumbersInOrder)
+    for (int i : Numbers)
     {
         cout << i << ", ";
     }
