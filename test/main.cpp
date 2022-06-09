@@ -44,11 +44,10 @@ int main()
                 }
                 else if ((j == ( Numbers.size() - 1 )) && (Elements >= Numbers.at(j)))
                 {
-                    Numbers.push_back(Elements);
+                    Numbers.insert(Numbers.end(), Elements);
                     break;
                 }
             }
-            cout << Numbers.size() << endl;
         }
     }
     for (int i : Numbers)
