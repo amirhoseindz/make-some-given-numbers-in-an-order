@@ -29,17 +29,13 @@ int main()
     {
         int Elements;
         cin >> Elements;
-        __gnu_cxx::__normal_iterator<int *, vector<int, allocator<int>>> ElementsPosition;
+        __gnu_cxx::__normal_iterator<int *, vector<int, allocator<int>>> ElementsPosition =  Numbers.end();
         for (int j = 0; j < Numbers.size(); j++)
         {
             if (Elements < Numbers.at(j))
             {
                 ElementsPosition = Numbers.begin() + j;
                 break;
-            }
-            else
-            {
-                ElementsPosition = Numbers.end();
             }
         }
         Numbers.insert(ElementsPosition, Elements);
