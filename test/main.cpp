@@ -1,22 +1,31 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-vector <int> MakeNumbersInOrder(vector <int> VectorNumbers)
+vector <int> MakeNumbersInOrder(vector <int> Numbers)
 {
     int temp;
-    for (int i = 0; i < VectorNumbers.size(); i++)
+    for (int i = 0; i < Numbers.size(); i++)
     {
-        for (int j = i; j < VectorNumbers.size(); j++)
+        for (int j = i; j < Numbers.size(); j++)
         {
-            if (VectorNumbers.at(i) > VectorNumbers.at(j))
+            if (Numbers.at(i) > Numbers.at(j))
             {
-                temp = VectorNumbers.at(i);
-                VectorNumbers.at(i) = VectorNumbers.at(j);
-                VectorNumbers.at(j) = temp;
+                temp = Numbers.at(i);
+                Numbers.at(i) = Numbers.at(j);
+                Numbers.at(j) = temp;
             }
         }
     }
-    return VectorNumbers;
+    return Numbers;
+}
+bool FindNumber(vector <int> Numbers, int TargetNumber)
+{
+    for (int Number : Numbers)
+    {
+        if (TargetNumber == Number)
+            return true;
+    }
+    return false;
 }
 int main()
 {
@@ -40,6 +49,18 @@ int main()
         }
         Numbers.insert(ElementsPosition, Elements);
     }
+    int TargetNumber;
+    cout << "pleas enter a number to chek if it exist in the list : " << endl;
+    cin >> TargetNumber;
+    if (FindNumber(Numbers, TargetNumber))
+    {
+        cout << "the number is on the list" << endl;
+    }
+    else
+    {
+        cout << "the number is not on the list" << endl;
+    }
+    cout << "and the number on the list in order are : " << endl;
     for (int i : Numbers)
     {
         cout << i << ", ";
