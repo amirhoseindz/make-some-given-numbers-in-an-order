@@ -32,15 +32,14 @@ int main()
         __gnu_cxx::__normal_iterator<int *, vector<int, allocator<int>>> ElementsPosition;
         for (int j = 0; j < Numbers.size(); j++)
         {
-            if ((Elements < Numbers.at(j)) || (i == 0))
+            if (Elements < Numbers.at(j))
             {
                 ElementsPosition = Numbers.begin() + j;
                 break;
             }
-            else if ((j == ( Numbers.size() - 1 )) && (Elements >= Numbers.at(j)))
+            else
             {
                 ElementsPosition = Numbers.end();
-                break;
             }
         }
         Numbers.insert(ElementsPosition, Elements);
