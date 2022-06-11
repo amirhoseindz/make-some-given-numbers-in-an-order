@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "D:/c_lion/Make some given numbers in an order/lib/FindInfoOFTargetNumber.cpp" "D:/c_lion/Make some given numbers in an order/cmake-build-debug/CMakeFiles/Make_some_given_numbers_in_an_order.dir/lib/FindInfoOFTargetNumber.cpp.obj"
   "D:/c_lion/Make some given numbers in an order/test/main.cpp" "D:/c_lion/Make some given numbers in an order/cmake-build-debug/CMakeFiles/Make_some_given_numbers_in_an_order.dir/test/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "../include/FindInfoOFTargetNumber.h"
 using namespace std;
 vector <int> MakeNumbersInOrder(vector <int> Numbers)
 {
@@ -17,15 +18,6 @@ vector <int> MakeNumbersInOrder(vector <int> Numbers)
         }
     }
     return Numbers;
-}
-bool FindNumber(vector <int> Numbers, int TargetNumber)
-{
-    for (int Number : Numbers)
-    {
-        if (TargetNumber == Number)
-            return true;
-    }
-    return false;
 }
 int main()
 {
@@ -52,15 +44,20 @@ int main()
     int TargetNumber;
     cout << "pleas enter a number to chek if it exist in the list : " << endl;
     cin >> TargetNumber;
-    if (FindNumber(Numbers, TargetNumber))
+    FindInfoOFTargetNumber InfoOFTargetNumber(Numbers, TargetNumber);
+    if (InfoOFTargetNumber.FindExistenceNumber())
     {
-        cout << "the number is on the list" << endl;
+        cout << "the target number is on the list" << endl;
+        int IndexNumber = InfoOFTargetNumber.FindIndexOfNumber();
+        cout << "and its index on the list is : " << IndexNumber << endl;
+        int FrequencyOfNumber = InfoOFTargetNumber.FindFrequencyOfNumber();
+        cout << "the target number appears on the list " << FrequencyOfNumber << " time(s)" << endl;
     }
     else
     {
-        cout << "the number is not on the list" << endl;
+        cout << "the target number is not on the list" << endl;
     }
-    cout << "and the number on the list in order are : " << endl;
+    cout << "and the numbers on the list in order are : " << endl;
     for (int i : Numbers)
     {
         cout << i << ", ";

@@ -93,12 +93,12 @@ clean: CMakeFiles/Make_some_given_numbers_in_an_order.dir/clean
 CMakeFiles/Make_some_given_numbers_in_an_order.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Make_some_given_numbers_in_an_order.dir\build.make CMakeFiles/Make_some_given_numbers_in_an_order.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Make_some_given_numbers_in_an_order.dir\build.make CMakeFiles/Make_some_given_numbers_in_an_order.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="D:\c_lion\Make some given numbers in an order\cmake-build-debug\CMakeFiles" --progress-num=1,2 "Built target Make_some_given_numbers_in_an_order"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="D:\c_lion\Make some given numbers in an order\cmake-build-debug\CMakeFiles" --progress-num=1,2,3 "Built target Make_some_given_numbers_in_an_order"
 .PHONY : CMakeFiles/Make_some_given_numbers_in_an_order.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Make_some_given_numbers_in_an_order.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "D:\c_lion\Make some given numbers in an order\cmake-build-debug\CMakeFiles" 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\c_lion\Make some given numbers in an order\cmake-build-debug\CMakeFiles" 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Make_some_given_numbers_in_an_order.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "D:\c_lion\Make some given numbers in an order\cmake-build-debug\CMakeFiles" 0
 .PHONY : CMakeFiles/Make_some_given_numbers_in_an_order.dir/rule

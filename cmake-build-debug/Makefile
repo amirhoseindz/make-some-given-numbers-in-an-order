@@ -142,6 +142,33 @@ Make_some_given_numbers_in_an_order/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Make_some_given_numbers_in_an_order.dir\build.make CMakeFiles/Make_some_given_numbers_in_an_order.dir/build
 .PHONY : Make_some_given_numbers_in_an_order/fast
 
+lib/FindInfoOFTargetNumber.obj: lib/FindInfoOFTargetNumber.cpp.obj
+
+.PHONY : lib/FindInfoOFTargetNumber.obj
+
+# target to build an object file
+lib/FindInfoOFTargetNumber.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Make_some_given_numbers_in_an_order.dir\build.make CMakeFiles/Make_some_given_numbers_in_an_order.dir/lib/FindInfoOFTargetNumber.cpp.obj
+.PHONY : lib/FindInfoOFTargetNumber.cpp.obj
+
+lib/FindInfoOFTargetNumber.i: lib/FindInfoOFTargetNumber.cpp.i
+
+.PHONY : lib/FindInfoOFTargetNumber.i
+
+# target to preprocess a source file
+lib/FindInfoOFTargetNumber.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Make_some_given_numbers_in_an_order.dir\build.make CMakeFiles/Make_some_given_numbers_in_an_order.dir/lib/FindInfoOFTargetNumber.cpp.i
+.PHONY : lib/FindInfoOFTargetNumber.cpp.i
+
+lib/FindInfoOFTargetNumber.s: lib/FindInfoOFTargetNumber.cpp.s
+
+.PHONY : lib/FindInfoOFTargetNumber.s
+
+# target to generate assembly for a file
+lib/FindInfoOFTargetNumber.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Make_some_given_numbers_in_an_order.dir\build.make CMakeFiles/Make_some_given_numbers_in_an_order.dir/lib/FindInfoOFTargetNumber.cpp.s
+.PHONY : lib/FindInfoOFTargetNumber.cpp.s
+
 test/main.obj: test/main.cpp.obj
 
 .PHONY : test/main.obj
@@ -178,6 +205,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Make_some_given_numbers_in_an_order
+	@echo ... lib/FindInfoOFTargetNumber.obj
+	@echo ... lib/FindInfoOFTargetNumber.i
+	@echo ... lib/FindInfoOFTargetNumber.s
 	@echo ... test/main.obj
 	@echo ... test/main.i
 	@echo ... test/main.s
