@@ -45,10 +45,10 @@ int main()
     cout << "pleas enter a number to chek if it exist in the list : " << endl;
     cin >> TargetNumber;
     FindInfoOFTargetNumber InfoOFTargetNumber(Numbers, TargetNumber);
-    if (InfoOFTargetNumber.FindExistenceNumber())
+    int IndexNumber = InfoOFTargetNumber.FindIndexOfNumber();
+    if (IndexNumber != -1)
     {
         cout << "the target number is on the list" << endl;
-        int IndexNumber = InfoOFTargetNumber.FindIndexOfNumber();
         cout << "and its index on the list is : " << IndexNumber << endl;
         int FrequencyOfNumber = InfoOFTargetNumber.FindFrequencyOfNumber();
         cout << "the target number appears on the list " << FrequencyOfNumber << " time(s)" << endl;

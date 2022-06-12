@@ -9,7 +9,6 @@ private :
     int TargetNumber;
 public :
     FindInfoOFTargetNumber (vector <int> Nums, int TargetNum);
-    bool FindExistenceNumber();
     int FindIndexOfNumber();
     int count = 0;
     int FindFrequencyOfNumber();

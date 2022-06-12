@@ -4,15 +4,6 @@ FindInfoOFTargetNumber :: FindInfoOFTargetNumber (vector <int> Nums, int TargetN
     Numbers = std::move(Nums);
     TargetNumber = TargetNum;
 }
-bool FindInfoOFTargetNumber :: FindExistenceNumber()
-{
-    for (int Number : Numbers)
-    {
-        if (TargetNumber == Number)
-            return true;
-    }
-    return false;
-}
 int FindInfoOFTargetNumber :: FindIndexOfNumber()
 {
     for (int i = 0; i < Numbers.size(); i++)
@@ -20,7 +11,7 @@ int FindInfoOFTargetNumber :: FindIndexOfNumber()
         if (TargetNumber == Numbers.at(i))
             return i;
     }
-    return 0;
+    return -1;
 }
 int FindInfoOFTargetNumber :: FindFrequencyOfNumber()
 {
