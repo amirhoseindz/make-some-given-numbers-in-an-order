@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include "../include/FindInfoOFTargetNumber.h"
 using namespace std;
 vector <int> MakeNumbersInOrder(vector <int> Numbers)
 {
@@ -18,6 +17,28 @@ vector <int> MakeNumbersInOrder(vector <int> Numbers)
         }
     }
     return Numbers;
+}
+bool FindIndexOfNumber(vector <int> Numbers, int TargetNumber, int &IndexNum)
+{
+    for (int i = 0; i < Numbers.size(); i++)
+    {
+        if (TargetNumber == Numbers.at(i))
+        {
+            IndexNum = i;
+            return true;
+        }
+    }
+    return false;
+}
+int FindFrequencyOfNumber(const vector <int>& Numbers, int TargetNumber)
+{
+    int count = 0;
+    for (int Number : Numbers)
+    {
+        if (TargetNumber == Number)
+            count += 1;
+    }
+    return count;
 }
 int main()
 {
@@ -44,13 +65,12 @@ int main()
     int TargetNumber;
     cout << "pleas enter a number to chek if it exist in the list : " << endl;
     cin >> TargetNumber;
-    FindInfoOFTargetNumber InfoOFTargetNumber(Numbers, TargetNumber);
-    int IndexNumber = InfoOFTargetNumber.FindIndexOfNumber();
-    if (InfoOFTargetNumber.ListIncludingNumber)
+    int IndexNumber;
+    if (FindIndexOfNumber(Numbers, TargetNumber, IndexNumber))
     {
         cout << "the target number is on the list" << endl;
         cout << "and its index on the list is : " << IndexNumber << endl;
-        int FrequencyOfNumber = InfoOFTargetNumber.FindFrequencyOfNumber();
+        int FrequencyOfNumber = FindFrequencyOfNumber(Numbers, TargetNumber);
         cout << "the target number appears on the list " << FrequencyOfNumber << " time(s)" << endl;
     }
     else

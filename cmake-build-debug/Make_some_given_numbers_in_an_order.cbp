@@ -80,12 +80,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="D:/c_lion/Make some given numbers in an order/include/FindInfoOFTargetNumber.h">
-			<Option target="Make_some_given_numbers_in_an_order"/>
-		</Unit>
-		<Unit filename="D:/c_lion/Make some given numbers in an order/lib/FindInfoOFTargetNumber.cpp">
-			<Option target="Make_some_given_numbers_in_an_order"/>
-		</Unit>
 		<Unit filename="D:/c_lion/Make some given numbers in an order/test/main.cpp">
 			<Option target="Make_some_given_numbers_in_an_order"/>
 		</Unit>

@@ -6,19 +6,9 @@
 
 #IncludeRegexTransform: 
 
-D:/c_lion/Make some given numbers in an order/include/FindInfoOFTargetNumber.h
-vector
--
-
-D:/c_lion/Make some given numbers in an order/lib/FindInfoOFTargetNumber.cpp
-../include/FindInfoOFTargetNumber.h
-D:/c_lion/Make some given numbers in an order/include/FindInfoOFTargetNumber.h
-
 D:/c_lion/Make some given numbers in an order/test/main.cpp
 iostream
 -
 vector
 -
-../include/FindInfoOFTargetNumber.h
-D:/c_lion/Make some given numbers in an order/include/FindInfoOFTargetNumber.h
 
