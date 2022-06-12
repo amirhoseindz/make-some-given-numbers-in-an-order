@@ -9,7 +9,10 @@ int FindInfoOFTargetNumber :: FindIndexOfNumber()
     for (int i = 0; i < Numbers.size(); i++)
     {
         if (TargetNumber == Numbers.at(i))
+        {
+            ListIncludingNumber = true;
             return i;
+        }
     }
     return -1;
 }

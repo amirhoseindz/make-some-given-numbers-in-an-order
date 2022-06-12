@@ -46,7 +46,7 @@ int main()
     cin >> TargetNumber;
     FindInfoOFTargetNumber InfoOFTargetNumber(Numbers, TargetNumber);
     int IndexNumber = InfoOFTargetNumber.FindIndexOfNumber();
-    if (IndexNumber != -1)
+    if (InfoOFTargetNumber.ListIncludingNumber)
     {
         cout << "the target number is on the list" << endl;
         cout << "and its index on the list is : " << IndexNumber << endl;

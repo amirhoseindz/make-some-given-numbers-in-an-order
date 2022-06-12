@@ -8,6 +8,7 @@ private :
     vector <int> Numbers;
     int TargetNumber;
 public :
+    bool ListIncludingNumber = false;
     FindInfoOFTargetNumber (vector <int> Nums, int TargetNum);
     int FindIndexOfNumber();
     int count = 0;
