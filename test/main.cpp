@@ -18,7 +18,7 @@ vector <int> MakeNumbersInOrder(vector <int> Numbers)
     }
     return Numbers;
 }
-bool FindIndexOfNumber(vector <int> Numbers, int TargetNumber, int &IndexNum)
+bool TryFindIndex(vector <int> Numbers, int TargetNumber, int &IndexNum)
 {
     for (int i = 0; i < Numbers.size(); i++)
     {
@@ -66,7 +66,7 @@ int main()
     cout << "pleas enter a number to chek if it exist in the list : " << endl;
     cin >> TargetNumber;
     int IndexNumber;
-    if (FindIndexOfNumber(Numbers, TargetNumber, IndexNumber))
+    if (TryFindIndex(Numbers, TargetNumber, IndexNumber))
     {
         cout << "the target number is on the list" << endl;
         cout << "and its index on the list is : " << IndexNumber << endl;
