@@ -20,43 +20,43 @@ vector <int> MakeNumbersInOrder(vector <int> Numbers)
 }
 bool TryFindIndex(vector <int> Numbers,int TempMiddleIndex, int MiddleIndex,  int TargetNumber, int &IndexNum)
 {
-    if ( TargetNumber > Numbers.at(MiddleIndex) )
-    {
-        TryFindIndex(Numbers, TempMiddleIndex / 2,
-                     MiddleIndex + TempMiddleIndex, TargetNumber, IndexNum);
-    }
-    else if ( TargetNumber < Numbers.at(MiddleIndex) )
-    {
-        TryFindIndex(Numbers, TempMiddleIndex / 2,
-                     MiddleIndex - TempMiddleIndex, TargetNumber, IndexNum);
-    }
-    else if (TargetNumber == Numbers.at(MiddleIndex))
-    {
-        IndexNum = MiddleIndex;
-        return true;
-    }
-    else if (TempMiddleIndex < 0 )
+    if (TempMiddleIndex > 0 )
     {
         if ( TargetNumber > Numbers.at(MiddleIndex) )
         {
-            for (int i = MiddleIndex; i < Numbers.size(); i++)
-            {
-                if (TargetNumber == Numbers.at(i))
-                {
-                    IndexNum = i;
-                    return true;
-                }
-            }
+            return TryFindIndex(Numbers, TempMiddleIndex/ 2,
+                         MiddleIndex + TempMiddleIndex, TargetNumber, IndexNum);
         }
         else if ( TargetNumber < Numbers.at(MiddleIndex) )
         {
-            for (int i = MiddleIndex; i >= 0; i--)
+            return TryFindIndex(Numbers, TempMiddleIndex/ 2,
+                         MiddleIndex - TempMiddleIndex, TargetNumber, IndexNum);
+        }
+        else if (TargetNumber == Numbers.at(MiddleIndex))
+        {
+            IndexNum = MiddleIndex;
+            return true;
+        }
+    }
+    else if ( TargetNumber > Numbers.at(MiddleIndex) )
+    {
+        for (int i = MiddleIndex; i < Numbers.size(); i++)
+        {
+            if (TargetNumber == Numbers.at(i))
             {
-                if (TargetNumber == Numbers.at(i))
-                {
-                    IndexNum = i;
-                    return true;
-                }
+                IndexNum = i;
+                return true;
+            }
+        }
+    }
+    else if ( TargetNumber < Numbers.at(MiddleIndex) )
+    {
+        for (int i = MiddleIndex; i >= 0; i--)
+        {
+            if (TargetNumber == Numbers.at(i))
+            {
+                IndexNum = i;
+                return true;
             }
         }
     }
