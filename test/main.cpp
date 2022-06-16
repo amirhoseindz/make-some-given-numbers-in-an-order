@@ -24,13 +24,15 @@ bool TryFindIndex(vector <int> Numbers,int TempMiddleIndex, int MiddleIndex,  in
     {
         if ( TargetNumber > Numbers.at(MiddleIndex) )
         {
-            return TryFindIndex(Numbers, TempMiddleIndex/ 2,
-                         MiddleIndex + TempMiddleIndex, TargetNumber, IndexNum);
+            TempMiddleIndex = TempMiddleIndex/ 2;
+            MiddleIndex = MiddleIndex + TempMiddleIndex;
+            return TryFindIndex(Numbers, TempMiddleIndex, MiddleIndex, TargetNumber, IndexNum);
         }
         else if ( TargetNumber < Numbers.at(MiddleIndex) )
         {
-            return TryFindIndex(Numbers, TempMiddleIndex/ 2,
-                         MiddleIndex - TempMiddleIndex, TargetNumber, IndexNum);
+            TempMiddleIndex = TempMiddleIndex/ 2;
+            MiddleIndex = MiddleIndex - TempMiddleIndex;
+            return TryFindIndex(Numbers, TempMiddleIndex, MiddleIndex, TargetNumber, IndexNum);
         }
         else if (TargetNumber == Numbers.at(MiddleIndex))
         {
@@ -38,28 +40,32 @@ bool TryFindIndex(vector <int> Numbers,int TempMiddleIndex, int MiddleIndex,  in
             return true;
         }
     }
-    else if ( TargetNumber > Numbers.at(MiddleIndex) )
+    else
     {
-        for (int i = MiddleIndex; i < Numbers.size(); i++)
+        if ( TargetNumber > Numbers.at(MiddleIndex) )
         {
-            if (TargetNumber == Numbers.at(i))
+            for (int i = MiddleIndex; i < Numbers.size(); i++)
             {
-                IndexNum = i;
-                return true;
+                if (TargetNumber == Numbers.at(i))
+                {
+                    IndexNum = i;
+                    return true;
+                }
+            }
+        }
+        else if ( TargetNumber < Numbers.at(MiddleIndex) )
+        {
+            for (int i = MiddleIndex; i >= 0; i--)
+            {
+                if (TargetNumber == Numbers.at(i))
+                {
+                    IndexNum = i;
+                    return true;
+                }
             }
         }
     }
-    else if ( TargetNumber < Numbers.at(MiddleIndex) )
-    {
-        for (int i = MiddleIndex; i >= 0; i--)
-        {
-            if (TargetNumber == Numbers.at(i))
-            {
-                IndexNum = i;
-                return true;
-            }
-        }
-    }
+    return false;
 }
 int FindFrequencyOfNumber(const vector <int>& Numbers, int TargetNumber)
 {
