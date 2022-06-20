@@ -36,86 +36,34 @@ vector <int> MakeNumbersInOrderUsingInsert(const vector <int>& Numbers)
     }
     return NumbersInOrder;
 }
-bool TryFindIndex(vector <int> Numbers, int MiddleIndex, int TargetNumber, int &IndexNum)
+bool TryFindIndex(vector <int> Numbers, int FirstIndex,int MiddleIndex, int LastIndex, int TargetNumber, int &IndexNum)
 {
-    int OriginalMiddleIndex = (Numbers.size() - 1) / 2;
-    int FirstIndex;
-    int LastIndex;
-    if ((MiddleIndex < 0) || (MiddleIndex == Numbers.size()))
+    if (LastIndex > FirstIndex)
     {
-        return false;
-    }
-    else
-    {
-        if ( TargetNumber > Numbers.at(OriginalMiddleIndex) )
+        MiddleIndex = FirstIndex + (LastIndex - FirstIndex) / 2;
+        if (TargetNumber > Numbers.at(MiddleIndex))
         {
-            if ( TargetNumber > Numbers.at(MiddleIndex))
-            {
-                FirstIndex = MiddleIndex;
-                LastIndex = Numbers.size() - 1 ;
-                MiddleIndex = MiddleIndex + ((LastIndex - FirstIndex) / 2);
-                if ((LastIndex - FirstIndex) / 2 < 1)
-                {
-                    return TryFindIndex(Numbers, MiddleIndex + 1 , TargetNumber, IndexNum);
-                }
-                else
-                {
-                    return TryFindIndex(Numbers, MiddleIndex, TargetNumber, IndexNum);
-                }
-            }
-            else if( TargetNumber < Numbers.at(MiddleIndex))
-            {
-                FirstIndex = OriginalMiddleIndex;
-                LastIndex = MiddleIndex;
-                MiddleIndex = MiddleIndex - ((LastIndex - FirstIndex) / 2);
-                if ((LastIndex - FirstIndex) / 2 < 1)
-                {
-                    return TryFindIndex(Numbers, MiddleIndex - 1, TargetNumber, IndexNum);
-                }
-                else
-                {
-                    return TryFindIndex(Numbers, MiddleIndex, TargetNumber, IndexNum);
-                }
-            }
+            MiddleIndex = FirstIndex + (LastIndex - FirstIndex) / 2;
+            FirstIndex = MiddleIndex + 1;
+            TryFindIndex(Numbers, FirstIndex, MiddleIndex, LastIndex, TargetNumber, IndexNum);
         }
-        else if ( TargetNumber < Numbers.at(OriginalMiddleIndex) )
+        else if ((TargetNumber < Numbers.at(MiddleIndex)))
         {
-            if( TargetNumber < Numbers.at(MiddleIndex))
-            {
-                FirstIndex = 0;
-                LastIndex = MiddleIndex;
-                MiddleIndex = MiddleIndex - ((LastIndex - FirstIndex) / 2);
-                if ((LastIndex - FirstIndex) / 2 < 1)
-                {
-                    return TryFindIndex(Numbers, MiddleIndex - 1, TargetNumber, IndexNum);
-                }
-                else
-                {
-                    return TryFindIndex(Numbers, MiddleIndex, TargetNumber, IndexNum);
-                }
-            }
-            else if ( TargetNumber > Numbers.at(MiddleIndex))
-            {
-                FirstIndex = MiddleIndex;
-                LastIndex = OriginalMiddleIndex;
-                MiddleIndex = MiddleIndex + ((LastIndex - FirstIndex) / 2);
-                if ((LastIndex - FirstIndex) / 2 < 1)
-                {
-                    return TryFindIndex(Numbers, MiddleIndex + 1, TargetNumber, IndexNum);
-                }
-                else
-                {
-                    return TryFindIndex(Numbers, MiddleIndex, TargetNumber, IndexNum);
-                }
-            }
+            MiddleIndex = FirstIndex + (LastIndex - FirstIndex) / 2;
+            LastIndex = MiddleIndex - 1;
+            TryFindIndex(Numbers, FirstIndex, MiddleIndex, LastIndex, TargetNumber, IndexNum);
         }
-        if ((TargetNumber == Numbers.at(MiddleIndex)) || (TargetNumber == Numbers.at(OriginalMiddleIndex)))
+        else if (TargetNumber == Numbers.at(MiddleIndex))
         {
             IndexNum = MiddleIndex;
             return true;
         }
     }
-    return false;
+    else
+    {
+        return false;
+
+    }
 }
 int FindFrequencyOfNumber(const vector <int>& Numbers, int TargetNumber)
 {
@@ -145,8 +93,8 @@ int main()
     int IndexNumber;
     int FirstIndex = 0;
     int LastIndex = NumbersInOrder.size() - 1;
-    int MiddleIndex = (LastIndex - FirstIndex) / 2 ;
-    if (TryFindIndex(NumbersInOrder, MiddleIndex, TargetNumber, IndexNumber))
+    int MiddleIndex = (LastIndex - FirstIndex) / 2;
+    if (TryFindIndex(NumbersInOrder, FirstIndex, MiddleIndex, LastIndex, TargetNumber, IndexNumber))
     {
         cout << "the target number is on the list" << endl;
         cout << "and its index on the list is : " << IndexNumber << endl;
