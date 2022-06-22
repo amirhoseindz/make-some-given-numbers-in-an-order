@@ -36,22 +36,20 @@ vector <int> MakeNumbersInOrderUsingInsert(const vector <int>& Numbers)
     }
     return NumbersInOrder;
 }
-bool TryFindIndex(vector <int> Numbers, int FirstIndex,int MiddleIndex, int LastIndex, int TargetNumber, int &IndexNum)
+bool TryFindIndex(vector <int> Numbers, int FirstIndex, int LastIndex, int TargetNumber, int &IndexNum)
 {
-    if (LastIndex > FirstIndex)
+    if (LastIndex >= FirstIndex)
     {
-        MiddleIndex = FirstIndex + (LastIndex - FirstIndex) / 2;
+        int MiddleIndex =(LastIndex + FirstIndex) / 2;
         if (TargetNumber > Numbers.at(MiddleIndex))
         {
-            MiddleIndex = FirstIndex + (LastIndex - FirstIndex) / 2;
             FirstIndex = MiddleIndex + 1;
-            TryFindIndex(Numbers, FirstIndex, MiddleIndex, LastIndex, TargetNumber, IndexNum);
+            TryFindIndex(Numbers, FirstIndex, LastIndex, TargetNumber, IndexNum);
         }
         else if ((TargetNumber < Numbers.at(MiddleIndex)))
         {
-            MiddleIndex = FirstIndex + (LastIndex - FirstIndex) / 2;
             LastIndex = MiddleIndex - 1;
-            TryFindIndex(Numbers, FirstIndex, MiddleIndex, LastIndex, TargetNumber, IndexNum);
+            TryFindIndex(Numbers, FirstIndex, LastIndex, TargetNumber, IndexNum);
         }
         else if (TargetNumber == Numbers.at(MiddleIndex))
         {
@@ -62,7 +60,6 @@ bool TryFindIndex(vector <int> Numbers, int FirstIndex,int MiddleIndex, int Last
     else
     {
         return false;
-
     }
 }
 int FindFrequencyOfNumber(const vector <int>& Numbers, int TargetNumber)
@@ -93,8 +90,7 @@ int main()
     int IndexNumber;
     int FirstIndex = 0;
     int LastIndex = NumbersInOrder.size() - 1;
-    int MiddleIndex = (LastIndex - FirstIndex) / 2;
-    if (TryFindIndex(NumbersInOrder, FirstIndex, MiddleIndex, LastIndex, TargetNumber, IndexNumber))
+    if (TryFindIndex(NumbersInOrder, FirstIndex, LastIndex, TargetNumber, IndexNumber))
     {
         cout << "the target number is on the list" << endl;
         cout << "and its index on the list is : " << IndexNumber << endl;
