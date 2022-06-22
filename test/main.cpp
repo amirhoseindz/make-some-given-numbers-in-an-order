@@ -38,28 +38,22 @@ vector <int> MakeNumbersInOrderUsingInsert(const vector <int>& Numbers)
 }
 bool TryFindIndex(vector <int> Numbers, int FirstIndex, int LastIndex, int TargetNumber, int &IndexNum)
 {
+    int MiddleIndex =(LastIndex + FirstIndex) / 2;
     if (LastIndex >= FirstIndex)
     {
-        int MiddleIndex =(LastIndex + FirstIndex) / 2;
-        if (TargetNumber > Numbers.at(MiddleIndex))
-        {
-            FirstIndex = MiddleIndex + 1;
-            TryFindIndex(Numbers, FirstIndex, LastIndex, TargetNumber, IndexNum);
-        }
-        else if ((TargetNumber < Numbers.at(MiddleIndex)))
-        {
-            LastIndex = MiddleIndex - 1;
-            TryFindIndex(Numbers, FirstIndex, LastIndex, TargetNumber, IndexNum);
-        }
-        else if (TargetNumber == Numbers.at(MiddleIndex))
+        if (TargetNumber == Numbers.at(MiddleIndex))
         {
             IndexNum = MiddleIndex;
             return true;
         }
-    }
-    else
-    {
-        return false;
+        if (TargetNumber > Numbers.at(MiddleIndex))
+        {
+            TryFindIndex(Numbers, MiddleIndex + 1, LastIndex, TargetNumber, IndexNum);
+        }
+        else if ((TargetNumber < Numbers.at(MiddleIndex)))
+        {
+            TryFindIndex(Numbers, FirstIndex, MiddleIndex - 1, TargetNumber, IndexNum);
+        }
     }
 }
 int FindFrequencyOfNumber(const vector <int>& Numbers, int TargetNumber)
