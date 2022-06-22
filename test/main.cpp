@@ -48,13 +48,14 @@ bool TryFindIndex(vector <int> Numbers, int FirstIndex, int LastIndex, int Targe
         }
         if (TargetNumber > Numbers.at(MiddleIndex))
         {
-            TryFindIndex(Numbers, MiddleIndex + 1, LastIndex, TargetNumber, IndexNum);
+            return TryFindIndex(Numbers, MiddleIndex + 1, LastIndex, TargetNumber, IndexNum);
         }
         else if ((TargetNumber < Numbers.at(MiddleIndex)))
         {
-            TryFindIndex(Numbers, FirstIndex, MiddleIndex - 1, TargetNumber, IndexNum);
+            return TryFindIndex(Numbers, FirstIndex, MiddleIndex - 1, TargetNumber, IndexNum);
         }
     }
+    return false;
 }
 int FindFrequencyOfNumber(const vector <int>& Numbers, int TargetNumber)
 {
