@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-vector <int> MakeNumbersInOrder(vector <int>& VectorNumbers)
+vector <int> MakeNumbersInOrder(vector <int> VectorNumbers)
 {
     int temp;
     for (int i = 0; i < VectorNumbers.size(); i++)
@@ -35,6 +35,65 @@ vector <int> MakeNumbersInOrderUsingInsert(const vector <int>& Numbers)
         NumbersInOrder.insert(ElementsPosition, Number);
     }
     return NumbersInOrder;
+}
+vector <int> MakeNumbersInOrderUsingMergeSort(vector <int> Numbers, int SmallestNumbersIndex, int MiddleIndex, int BiggestNumbersIndex)
+{
+    int n1 = MiddleIndex - SmallestNumbersIndex + 1;
+    int n2 = BiggestNumbersIndex - MiddleIndex;
+    vector <int> FirstHalf;
+    FirstHalf.reserve(n1);
+    vector <int> SecondHalf;
+    SecondHalf.reserve(n2);
+    for (int i = 0; i < n1; i++)
+    {
+        FirstHalf.push_back(Numbers.at(SmallestNumbersIndex + i));
+    }
+    for (int i = 0; i < n1; i++)
+    {
+        SecondHalf.push_back(Numbers.at(MiddleIndex + 1 + i));
+    }
+    int i, j, k;
+    i = 0;
+    j = 0;
+    k = SmallestNumbersIndex;
+    while (i < n1 && j < n2)
+    {
+        if (FirstHalf.at(i) <= SecondHalf.at(j))
+        {
+            Numbers.at(k) = FirstHalf.at(i);
+            i++;
+        }
+        else
+        {
+            Numbers.at(k) = SecondHalf.at(j);
+            j++;
+        }
+        k++;
+    }
+    while (i < n1)
+    {
+        Numbers.at(k) = FirstHalf.at(i);
+        i++;
+        k++;
+    }
+    while (j < n2)
+    {
+        Numbers.at(k) = SecondHalf.at(j);
+        j++;
+        k++;
+    }
+    return Numbers;
+}
+void DivideMainVectorToTwoVectors(const vector <int>& VectorNumbers, int FirstIndex, int LastIndex)
+{
+    if (FirstIndex < LastIndex)
+    {
+        int MiddleIndex =(LastIndex + FirstIndex) / 2;
+        DivideMainVectorToTwoVectors(VectorNumbers, FirstIndex, MiddleIndex);
+        DivideMainVectorToTwoVectors(VectorNumbers, MiddleIndex + 1, LastIndex);
+        MakeNumbersInOrderUsingMergeSort(VectorNumbers, FirstIndex, MiddleIndex, LastIndex);
+    }
+
 }
 bool TryFindIndex(vector <int> const& Numbers, int FirstIndex, int LastIndex, int TargetNumber, int &IndexNum)
 {
@@ -75,13 +134,14 @@ int main()
     {
         cin >> Elements;
     }
-    vector <int> NumbersInOrder = MakeNumbersInOrderUsingInsert(Numbers);
     int TargetNumber;
     cout << "pleas enter a number to chek if it exist in the list : " << endl;
     cin >> TargetNumber;
     int IndexNumber;
     int FirstIndex = 0;
-    int LastIndex = NumbersInOrder.size() - 1;
+    int LastIndex = Numbers.size() - 1;
+    DivideMainVectorToTwoVectors (Numbers, FirstIndex, LastIndex);
+    vector <int> NumbersInOrder = MakeNumbersInOrderUsingInsert(Numbers);
     if (TryFindIndex(NumbersInOrder, FirstIndex, LastIndex, TargetNumber, IndexNumber))
     {
         cout << "the target number is on the list" << endl;
