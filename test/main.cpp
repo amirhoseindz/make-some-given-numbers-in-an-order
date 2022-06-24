@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-vector <int> MakeNumbersInOrder(vector <int> VectorNumbers)
+vector <int> MakeNumbersInOrder(vector <int>& VectorNumbers)
 {
     int temp;
     for (int i = 0; i < VectorNumbers.size(); i++)
@@ -36,26 +36,23 @@ vector <int> MakeNumbersInOrderUsingInsert(const vector <int>& Numbers)
     }
     return NumbersInOrder;
 }
-bool TryFindIndex(vector <int> Numbers, int FirstIndex, int LastIndex, int TargetNumber, int &IndexNum)
+bool TryFindIndex(vector <int> const& Numbers, int FirstIndex, int LastIndex, int TargetNumber, int &IndexNum)
 {
-    int MiddleIndex =(LastIndex + FirstIndex) / 2;
-    if (LastIndex >= FirstIndex)
+    if (FirstIndex > LastIndex)
     {
-        if (TargetNumber == Numbers.at(MiddleIndex))
-        {
-            IndexNum = MiddleIndex;
-            return true;
-        }
-        if (TargetNumber > Numbers.at(MiddleIndex))
-        {
-            return TryFindIndex(Numbers, MiddleIndex + 1, LastIndex, TargetNumber, IndexNum);
-        }
-        else if ((TargetNumber < Numbers.at(MiddleIndex)))
-        {
-            return TryFindIndex(Numbers, FirstIndex, MiddleIndex - 1, TargetNumber, IndexNum);
-        }
+        return false;
     }
-    return false;
+    int MiddleIndex =(LastIndex + FirstIndex) / 2;
+    if (TargetNumber > Numbers.at(MiddleIndex))
+    {
+        return TryFindIndex(Numbers, MiddleIndex + 1, LastIndex, TargetNumber, IndexNum);
+    }
+    else if ((TargetNumber < Numbers.at(MiddleIndex)))
+    {
+        return TryFindIndex(Numbers, FirstIndex, MiddleIndex - 1, TargetNumber, IndexNum);
+    }
+    IndexNum = MiddleIndex;
+    return true;
 }
 int FindFrequencyOfNumber(const vector <int>& Numbers, int TargetNumber)
 {
